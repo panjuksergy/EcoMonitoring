@@ -1,0 +1,23 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="row">
+    <div class="col">
+      <div class="formatted-text text-center">
+        <p *ngFor="let paragraph of paragraphs">{{ paragraph }}</p>
+      </div>
+      <div class="mt-5 text-center">
+        <button (click)="onChangeText()" class="btn btn-primary">U also can change this text, if u r admin</button>
+      </div>
+    </div>
+  </div>
+</div>
+<app-pop-up-component
+  *ngIf="isPopOverVisible"
+[shownText]= shownText
+(onOkeyInput)= onOkey($event)
+(closeOverlay)="isPopOverVisible = false">
+</app-pop-up-component>
+<app-pop-up-component
+  *ngIf="is405"
+  [shownText]= urNotAdminText
+  (closeOverlay)="is405 = false">
+</app-pop-up-component>

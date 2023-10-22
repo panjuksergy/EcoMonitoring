@@ -1,0 +1,43 @@
+<div class="overlay">
+  <div class="overlay-content" [ngClass]="{ 'with-dt': withDT }">
+    <div class="mainBlock">
+      <div class="form-outline mb-4">
+        <div class="align-content-center fw-bold fs-6 text-center" [innerHTML]="shownText"></div>
+        <div *ngIf="withDT">
+          <div class="table-container">
+            <form [formGroup]="form" (ngSubmit)="onSubmitForm()">
+              <table>
+                <thead>
+                <tr>
+                  <th>Suspended Solids</th>
+                  <th>Sulfur Dioxide</th>
+                  <th>Carbon Dioxide</th>
+                  <th>Nitrogen Dioxide</th>
+                  <th>Hydrogen Fluoride</th>
+                  <th>Ammonia</th>
+                  <th>Formaldehyde</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td><input type="text" formControlName="suspendedSolids"></td>
+                  <td><input type="text" formControlName="sulfurDioxide"></td>
+                  <td><input type="text" formControlName="carbonDioxide"></td>
+                  <td><input type="text" formControlName="nitrogenDioxide"></td>
+                  <td><input type="text" formControlName="hydrogenFluoride"></td>
+                  <td><input type="text" formControlName="ammonia"></td>
+                  <td><input type="text" formControlName="formaldehyde"></td>
+                </tr>
+                </tbody>
+              </table>
+              <button type="submit" class="btn btn-primary btn-block col-md-4">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="justify-content-center ">
+      <button (click)="onCloseOverlay()" type="submit" class="btn btn-primary btn-block col-md-4">Close</button>
+    </div>
+  </div>
+</div>

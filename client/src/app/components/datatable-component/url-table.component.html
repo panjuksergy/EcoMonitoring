@@ -1,0 +1,54 @@
+<div class="table-container">
+  <table>
+    <thead>
+    <tr>
+      <th>№</th>
+      <th>Suspended Solids</th>
+      <th>Sulfur Dioxide</th>
+      <th>Carbon Dioxide</th>
+      <th>Nitrogen Dioxide</th>
+      <th>Hydrogen Fluoride</th>
+      <th>Hydrogen Fluoride</th>
+      <th>Hydrogen Fluoride</th>
+      <th>Actions <button (click)="openOverlay()" *ngIf="isLoggedIn" type="button" class="action-button addnew"><fa-icon [icon]="faPlus" style="color: #000000"></fa-icon></button></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let record of ecoRecords; let i = index">
+      <td>{{i+1}}</td>
+      <td>{{ record.suspendedSolids }}</td>
+      <td>{{ record.sulfurDioxide }}</td>
+      <td>{{ record.carbonDioxide }}</td>
+      <td>{{ record.nitrogenDioxide }}</td>
+      <td>{{ record.hydrogenFluoride }}</td>
+      <td>{{ record.ammonia }}</td>
+      <td>{{ record.formaldehyde }}</td>
+      <td class="mainButtons">
+
+      <button (click)="showEcoRecordDetails(record.recordId)" type="button" class="action-button edit"><fa-icon [icon]="faInfo" style="color: #000000"></fa-icon></button>
+        <button (click)="deleteEcoRecord(record.recordId)" type="button" class="action-button delete"><fa-icon [icon]="faTrash" style="color: #000000"></fa-icon></button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<app-pop-up-component
+  *ngIf="isDetailsVisible"
+  [withDT]="true"
+  [shownText]= detailsToShow
+  (closeOverlay)="handleDetailsClose()">
+</app-pop-up-component>
+
+
+
+
+
+
+<app-new-record-component (closeOverlay)="handleOverlayClose()" *ngIf="isOverlayVisible"></app-new-record-component>
+
+
+
+
+

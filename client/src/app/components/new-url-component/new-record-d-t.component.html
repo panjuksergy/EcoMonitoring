@@ -1,0 +1,8 @@
+<app-pop-up-component
+  [withDT]="true"
+  [shownText]= textToShown
+  (closeOverlay)="onCloseOverlay()"
+  (onOkeyInput)="generateNewEcoRecord($event)"
+  (onSubmit)="generateNewEcoRecord($event)">
+</app-pop-up-component>
+

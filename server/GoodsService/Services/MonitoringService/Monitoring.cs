@@ -8,8 +8,6 @@ namespace SparkSwim.GoodsService.ShortenerService
 {
     public class Monitoring : IMonitoring
     {
-        public EcoRecord LastConcentration { get; set; }
-
         private const double RfcSulfureDioxide = 0.08;
         private const double RfcFormaldehid = 0.046;
         private const double RfcHydrogenFluoride = 0.82;
@@ -20,63 +18,57 @@ namespace SparkSwim.GoodsService.ShortenerService
 
 // Розрахунок неканцерогенного ризику для діоксиду азоту 
 
-        public double CalculateNonCancerRiskForNitrogenDioxide()
+        public double CalculateNonCancerRiskForNitrogenDioxide(double nitrogenDioxide)
         {
-            double hq = LastConcentration.NitrogenDioxide / RfcNitrogenDioxide;
+            double hq = nitrogenDioxide / RfcNitrogenDioxide;
             return hq;
         }
 
 // Розрахунок неканцерогенного ризику для аміаку
-        public double CalculateNonCancerRiskForAmmonia()
+        public double CalculateNonCancerRiskForAmmonia(double ammonia)
         {
-            double hq = LastConcentration.Ammonia / RfcAmmonia;
+            double hq = ammonia / RfcAmmonia;
             return hq;
         }
 
 // Розрахунок неканцерогенного ризику для діоксиду сірки
-        public double CalculateNonCancerRiskForSulfurDioxide()
+        public double CalculateNonCancerRiskForSulfurDioxide(double sulfurDioxide)
         {
-            double hq = LastConcentration.SulfurDioxide / RfcSulfureDioxide;
+            double hq = sulfurDioxide / RfcSulfureDioxide;
             return hq;
         }
 
 // Розрахунок неканцерогенного ризику для формальдегіду
-        public double CalculateNonCancerRiskForFormaldehyde()
+        public double CalculateNonCancerRiskForFormaldehyde(double formaldehyde)
         {
-            double hq = LastConcentration.Formaldehyde / RfcFormaldehid;
+            double hq = formaldehyde / RfcFormaldehid;
             return hq;
         }
 
 // Розрахунок неканцерогенного ризику для фтористого водню
-        public double CalculateNonCancerRiskForHydrogenFluoride()
+        public double CalculateNonCancerRiskForHydrogenFluoride(double hydrogenFluorid)
         {
-            double hq = LastConcentration.HydrogenFluoride / RfcHydrogenFluoride;
+            double hq = hydrogenFluorid / RfcHydrogenFluoride;
             return hq;
         }
 
 // Розрахунок неканцерогенного ризику для діоксиду вуглецю
-        public double CalculateNonCancerRiskForCarbonDioxide()
+        public double CalculateNonCancerRiskForCarbonDioxide(double carbonDioxide)
         {
-            double hq = LastConcentration.CarbonDioxide / RfcCarmonDioxyde;
+            double hq = carbonDioxide / RfcCarmonDioxyde;
             return hq;
         }
 
 // Розрахунок неканцерогенного ризику для твердих часток (пилу)
-        public double CalculateNonCancerRiskForSuspendedSolids()
+        public double CalculateNonCancerRiskForSuspendedSolids(double suspendedSolids)
         {
-            double hq = LastConcentration.SuspendedSolids / RfcSuspendedSolids;
+            double hq = suspendedSolids / RfcSuspendedSolids;
             return hq;
         }
 
 // Розрахунок сумарного неканцерогенного ризику
-        public double CalculateTotalNonCancerRisk()
+        public double CalculateTotalNonCancerRisk(double hqSulfurDioxide, double hqFormaldehyde, double hqCarbonDioxide, double hqHydrogenFluoride, double hqSuspendedSolids)
         {
-            double hqSulfurDioxide = CalculateNonCancerRiskForSulfurDioxide();
-            double hqFormaldehyde = CalculateNonCancerRiskForFormaldehyde();
-            double hqHydrogenFluoride = CalculateNonCancerRiskForHydrogenFluoride();
-            double hqCarbonDioxide = CalculateNonCancerRiskForCarbonDioxide();
-            double hqSuspendedSolids = CalculateNonCancerRiskForSuspendedSolids();
-
             double totalRisk = hqSulfurDioxide + hqFormaldehyde + hqHydrogenFluoride + hqCarbonDioxide +
                                hqSuspendedSolids;
             return totalRisk;

@@ -4,14 +4,15 @@ namespace SparkSwim.GoodsService.ShortenerService;
 
 public interface IMonitoring
 {
-    public double CalculateTotalNonCancerRisk();
-    public double CalculateNonCancerRiskForSuspendedSolids();
-    public double CalculateNonCancerRiskForCarbonDioxide();
-    public double CalculateNonCancerRiskForHydrogenFluoride();
-    public double CalculateNonCancerRiskForFormaldehyde();
-    public double CalculateNonCancerRiskForSulfurDioxide();
-    public double CalculateNonCancerRiskForAmmonia();
-    public double CalculateNonCancerRiskForNitrogenDioxide();
+    public double CalculateNonCancerRiskForNitrogenDioxide(double nitrogenDioxide);
+    public double CalculateNonCancerRiskForAmmonia(double ammonia);
+    public double CalculateNonCancerRiskForSulfurDioxide(double sulfurDioxide);
+    public double CalculateNonCancerRiskForFormaldehyde(double formaldehyde);
+    public double CalculateNonCancerRiskForHydrogenFluoride(double hydrogenFluorid);
+    public double CalculateNonCancerRiskForCarbonDioxide(double carbonDioxide);
+    public double CalculateNonCancerRiskForSuspendedSolids(double suspendedSolids);
 
+    public double CalculateTotalNonCancerRisk(double hqSulfurDioxide, double hqFormaldehyde, double hqCarbonDioxide,
+        double hqHydrogenFluoride, double hqSuspendedSolids);
 
 }

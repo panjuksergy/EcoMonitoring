@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SparkSwim.GoodsService.Goods.Models;
 using SparkSwim.GoodsService.Interfaces;
+using SparkSwim.GoodsService.ShortenerService;
 
 namespace SparkSwim.GoodsService.Controllers;
 
@@ -11,10 +12,12 @@ namespace SparkSwim.GoodsService.Controllers;
 public class UrlAdminController : BaseController
 {
     private readonly IEcoDbContext _dbContext;
+    private readonly IMonitoring _monitoring;
 
-    public UrlAdminController(IEcoDbContext ecoDbContext)
+    public UrlAdminController(IEcoDbContext ecoDbContext, IMonitoring monitoring)
     {
         _dbContext = ecoDbContext;
+        _monitoring = monitoring;
     }
 
     [AllowAnonymous]
@@ -46,6 +49,23 @@ public class UrlAdminController : BaseController
                     Formaldehyde = Convert.ToDouble(worksheet.Cells[row, 7].Value),  
                     CreationDate = DateTime.Now,
                 };
+                MonitoringSingleStat monitoringSingleStat = new MonitoringSingleStat
+                {
+                    SuspendedSolidsStat = _monitoring.CalculateNonCancerRiskForSuspendedSolids(entity.SuspendedSolids),
+                    SulfurDioxideStat = _monitoring.CalculateNonCancerRiskForSulfurDioxide(entity.SulfurDioxide),
+                    CarbonDioxideStat = _monitoring.CalculateNonCancerRiskForCarbonDioxide(entity.CarbonDioxide),
+                    NitrogenDioxideStat = _monitoring.CalculateNonCancerRiskForNitrogenDioxide(entity.NitrogenDioxide),
+                    HydrogenFluorideStat = _monitoring.CalculateNonCancerRiskForHydrogenFluoride(entity.HydrogenFluoride),
+                    AmmoniaStat = _monitoring.CalculateNonCancerRiskForAmmonia(entity.Ammonia),
+                    FormaldehydeStat = _monitoring.CalculateNonCancerRiskForFormaldehyde(entity.Formaldehyde),
+                };
+                double totalNonCancerRisk = _monitoring.CalculateTotalNonCancerRisk(
+                    monitoringSingleStat.SulfurDioxideStat, monitoringSingleStat.FormaldehydeStat,
+                    monitoringSingleStat.CarbonDioxideStat, monitoringSingleStat.HydrogenFluorideStat,
+                    monitoringSingleStat.SuspendedSolidsStat);
+                monitoringSingleStat.TotalNonCancerRisk = totalNonCancerRisk;
+                entity.MonitoringSingleStat = monitoringSingleStat;
+                entity.MonitoringSingleStatId = Guid.NewGuid();
                 _dbContext.EcoRecords.Add(entity);
             }
             await _dbContext.SaveChangesAsync(CancellationToken.None);

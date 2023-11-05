@@ -46,6 +46,7 @@ void RegisterServices(IServiceCollection services)
     });
     services.AddApplication();
     services.AddControllers();
+    services.AddTransient<IMonitoring, Monitoring>();
 
     services.AddJwtAuth(builder.Configuration);
 }

@@ -3,17 +3,20 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SparkSwim.GoodsService;
 
 #nullable disable
 
-namespace SparkSwim.GoodsService.Migrations
+namespace EcoMonitoringService.Migrations
 {
     [DbContext(typeof(EcoDbContext))]
-    partial class EcoRecordsContextModelSnapshot : ModelSnapshot
+    [Migration("20231105211147_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

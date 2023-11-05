@@ -9,5 +9,9 @@ public class UrlConfiguration : IEntityTypeConfiguration<EcoRecord>
     public void Configure(EntityTypeBuilder<EcoRecord> builder)
     {
         builder.HasKey(_ => _.RecordId);
+        builder
+            .HasOne(e => e.MonitoringSingleStat)
+            .WithOne(s => s.EcoRecord)
+            .HasForeignKey<MonitoringSingleStat>(s => s.EcoRecordId).IsRequired();
     }   
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jCcHpzlFxzvBJSlOxVO6NEK41ePJVfiOQZ1uiRiDICDjInCzVK4FF5TMYY6UZyLf756K7WT34i1AHA5MDU6MPA==",
+  "dgSpecHash": "RHguBmIoLnbkIjzUQNNoLeOQXu7TV9JMGfndVth1soeQCnTm6WI2IzBIVX/B/mHvaQagMStUVmQ/1/8sXI9y8g==",
   "success": true,
-  "projectFilePath": "/home/elainezirael/InforceTestTask/MakeUrURLShorter/server/IdentityService/IdentityService.csproj",
+  "projectFilePath": "/home/elainezirael/InforceTestTask/EcoMonitoring 1lba/EcoMonitoring/server/IdentityService/IdentityService.csproj",
   "expectedPackageFiles": [
     "/home/elainezirael/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/home/elainezirael/.nuget/packages/mediatr/12.1.0/mediatr.12.1.0.nupkg.sha512",

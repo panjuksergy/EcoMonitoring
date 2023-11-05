@@ -28,7 +28,7 @@ namespace SparkSwim.GoodsService.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<double>("AmmoniaFormaldehyde")
+                    b.Property<double>("Ammonia")
                         .HasColumnType("float");
 
                     b.Property<double>("CarbonDioxide")
@@ -36,6 +36,9 @@ namespace SparkSwim.GoodsService.Migrations
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<double>("Formaldehyde")
+                        .HasColumnType("float");
 
                     b.Property<double>("HydrogenFluoride")
                         .HasColumnType("float");

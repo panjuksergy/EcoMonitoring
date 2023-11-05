@@ -9,12 +9,14 @@ namespace SparkSwim.GoodsService;
 public class EcoDbContext : DbContext, IEcoDbContext
 {
     public DbSet<EcoRecord> EcoRecords { get; set; }
-    
-    public EcoDbContext(DbContextOptions<EcoDbContext> options) : base(options) {}
+    public DbSet<MonitoringSingleStat> MonitoringSingleStats { get; set; }
+    public EcoDbContext(DbContextOptions<EcoDbContext> options) : base(options)
+    {
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // modelBuilder.ApplyConfiguration(new UrlConfiguration());
+        modelBuilder.ApplyConfiguration(new UrlConfiguration());
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         base.OnModelCreating(modelBuilder);
     }

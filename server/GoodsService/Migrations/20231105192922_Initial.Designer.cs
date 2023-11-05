@@ -12,8 +12,8 @@ using SparkSwim.GoodsService;
 namespace EcoMonitoringService.Migrations
 {
     [DbContext(typeof(EcoDbContext))]
-    [Migration("20231018214209_Eco")]
-    partial class Eco
+    [Migration("20231105192922_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,7 +31,7 @@ namespace EcoMonitoringService.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<double>("AmmoniaFormaldehyde")
+                    b.Property<double>("Ammonia")
                         .HasColumnType("float");
 
                     b.Property<double>("CarbonDioxide")
@@ -39,6 +39,9 @@ namespace EcoMonitoringService.Migrations
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<double>("Formaldehyde")
+                        .HasColumnType("float");
 
                     b.Property<double>("HydrogenFluoride")
                         .HasColumnType("float");

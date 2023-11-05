@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SKeOvJ/Le3C5RQ9/PWDXAZtb9SM5jG7xRDiIoHnuiq27pUPu82m1Khruk5jktiTLKA+kae6KWUZBaLUh7YP9Hg==",
+  "dgSpecHash": "9kh51/MPbxs+fNRhETIeIyvDWAvJUWh08Ot7bbruTn1IgVgf20WONEDwaGl9w57/VsoDPUscw/SfMEtPqBUtqA==",
   "success": true,
-  "projectFilePath": "/home/elainezirael/InforceTestTask/MakeUrURLShorter/server/GoodsService/EcoMonitoringService.csproj",
+  "projectFilePath": "/home/elainezirael/InforceTestTask/EcoMonitoring 1lba/EcoMonitoring/server/GoodsService/EcoMonitoringService.csproj",
   "expectedPackageFiles": [
     "/home/elainezirael/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/home/elainezirael/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

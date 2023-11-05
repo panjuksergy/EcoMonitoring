@@ -32,7 +32,7 @@ void RegisterServices(IServiceCollection services)
 {
     services.AddControllers();
 
-    services.AddSingleton<IShortener, DefaultShortener>();
+    services.AddSingleton<IMonitoring, Monitoring>();
     services.AddDbContext<IEcoDbContext, EcoDbContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
     );

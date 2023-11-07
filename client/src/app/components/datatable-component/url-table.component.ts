@@ -46,9 +46,18 @@ export class UrlTableComponent implements OnInit {
   }
 
   showEcoRecordDetails(ulrId: string): void{
-    this.ecoRecordsService.getUrlDetails(ulrId).subscribe((data) => {
-      this.detailsToShow = `Url Id = ${data.urlId}<br/>Url From = ${data.urlFrom}<br/>Url to = ${data.urlTo}<br/>
-                            Created ${data.creationDate}<br/> Created by ${data.userId}`;
+    this.ecoRecordsService.getMonitoringDetails(ulrId).subscribe((data) => {
+      this.detailsToShow = `
+        Suspend Solids = ${data.suspendedSolidsStat}<br/>
+        Sulfur Dioxide Stat = ${data.sulfurDioxideStat}<br/>
+        Carbon Dioxide Stat = ${data.carbonDioxideStat}<br/>
+        Nitrogen Dioxide Stat = ${data.nitrogenDioxideStat}<br/>
+        Hydrogen Fluoride Stat = ${data.hydrogenFluorideStat}<br/>
+        Ammonia Stat = ${data.ammoniaStat}<br/>
+        Formaldehyde Stat = ${data.formaldehydeStat}<br/><br/><br/>
+        Total Non-Cancer Risk = ${data.totalNonCancerRisk}<br/>
+    `;
+
     });
     this.isDetailsVisible = true;
   }

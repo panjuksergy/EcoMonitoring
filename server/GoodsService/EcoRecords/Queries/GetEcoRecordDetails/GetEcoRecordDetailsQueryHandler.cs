@@ -21,13 +21,14 @@ public class GetEcoRecordDetailsQueryHandler : IRequestHandler<GetEcoRecordDetai
     public async Task<EcoRecordDetailsVm> Handle(GetEcoRecordDetailsQuery request, CancellationToken cancellationToken)
     {
         var entity =
-            await _ecoDbContext.EcoRecords.FirstOrDefaultAsync(_ => _.RecordId == request.RecordId,
+            await _ecoDbContext.MonitoringSingleStats.FirstOrDefaultAsync(_ => _.RecordId == request.RecordId,
                 cancellationToken);
         if (entity == null || entity.RecordId != request.RecordId)
         {
             throw new NotFoundException(nameof(EcoRecord), request.RecordId);
         }
 
-        return _mapper.Map<EcoRecordDetailsVm>(entity);
+        var response = _mapper.Map<EcoRecordDetailsVm>(entity);
+        return response;
     }
 }

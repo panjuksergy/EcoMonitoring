@@ -12,6 +12,6 @@ public class UrlConfiguration : IEntityTypeConfiguration<EcoRecord>
         builder
             .HasOne(e => e.MonitoringSingleStat)
             .WithOne(s => s.EcoRecord)
-            .HasForeignKey<MonitoringSingleStat>(s => s.EcoRecordId).IsRequired();
+            .HasForeignKey<MonitoringSingleStat>(s => s.RecordId).IsRequired();
     }   
 }

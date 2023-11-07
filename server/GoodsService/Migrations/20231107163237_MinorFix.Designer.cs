@@ -12,8 +12,8 @@ using SparkSwim.GoodsService;
 namespace EcoMonitoringService.Migrations
 {
     [DbContext(typeof(EcoDbContext))]
-    [Migration("20231105211147_Initial")]
-    partial class Initial
+    [Migration("20231107163237_MinorFix")]
+    partial class MinorFix
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -78,9 +78,6 @@ namespace EcoMonitoringService.Migrations
                     b.Property<double>("CarbonDioxideStat")
                         .HasColumnType("float");
 
-                    b.Property<Guid>("EcoRecordId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<double>("FormaldehydeStat")
                         .HasColumnType("float");
 
@@ -89,6 +86,9 @@ namespace EcoMonitoringService.Migrations
 
                     b.Property<double>("NitrogenDioxideStat")
                         .HasColumnType("float");
+
+                    b.Property<Guid>("RecordId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<double>("SulfurDioxideStat")
                         .HasColumnType("float");
@@ -101,7 +101,7 @@ namespace EcoMonitoringService.Migrations
 
                     b.HasKey("MonitoringSingleStatId");
 
-                    b.HasIndex("EcoRecordId")
+                    b.HasIndex("RecordId")
                         .IsUnique();
 
                     b.ToTable("MonitoringSingleStats");
@@ -111,7 +111,7 @@ namespace EcoMonitoringService.Migrations
                 {
                     b.HasOne("SparkSwim.GoodsService.Goods.Models.EcoRecord", "EcoRecord")
                         .WithOne("MonitoringSingleStat")
-                        .HasForeignKey("SparkSwim.GoodsService.Goods.Models.MonitoringSingleStat", "EcoRecordId")
+                        .HasForeignKey("SparkSwim.GoodsService.Goods.Models.MonitoringSingleStat", "RecordId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

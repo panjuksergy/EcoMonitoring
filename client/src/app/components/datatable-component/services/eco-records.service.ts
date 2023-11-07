@@ -18,7 +18,7 @@ export class EcoRecordsService {
   deleteEcoRecord(dellreq: string): Observable<any> {
     return this.http.delete(`${this.baseUrl}/EcoRecordAuthorize/deleteEcoRecord/`+dellreq);
   }
-  getUrlDetails(id: string ): Observable<any> {
-    return this.http.get(`${this.baseUrl}/UrlAuthorize/details/`+id);
+  getMonitoringDetails(id: string ): Observable<any> {
+    return this.http.get(`${this.baseUrl}/EcoRecordAuthorize/details/`+id);
   }
 }

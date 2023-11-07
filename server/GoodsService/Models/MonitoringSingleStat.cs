@@ -5,7 +5,7 @@
     {
         public Guid MonitoringSingleStatId { get; set; }
         public EcoRecord EcoRecord { get; set; }
-        public Guid EcoRecordId { get; set; }
+        public Guid RecordId { get; set; }
         public double SuspendedSolidsStat { get; set; }
         public double SulfurDioxideStat { get; set; }
         public double CarbonDioxideStat { get; set; }

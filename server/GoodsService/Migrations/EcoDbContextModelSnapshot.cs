@@ -8,10 +8,10 @@ using SparkSwim.GoodsService;
 
 #nullable disable
 
-namespace SparkSwim.GoodsService.Migrations
+namespace EcoMonitoringService.Migrations
 {
     [DbContext(typeof(EcoDbContext))]
-    partial class EcoRecordsContextModelSnapshot : ModelSnapshot
+    partial class EcoDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -75,9 +75,6 @@ namespace SparkSwim.GoodsService.Migrations
                     b.Property<double>("CarbonDioxideStat")
                         .HasColumnType("float");
 
-                    b.Property<Guid>("EcoRecordId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<double>("FormaldehydeStat")
                         .HasColumnType("float");
 
@@ -86,6 +83,9 @@ namespace SparkSwim.GoodsService.Migrations
 
                     b.Property<double>("NitrogenDioxideStat")
                         .HasColumnType("float");
+
+                    b.Property<Guid>("RecordId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<double>("SulfurDioxideStat")
                         .HasColumnType("float");
@@ -98,7 +98,7 @@ namespace SparkSwim.GoodsService.Migrations
 
                     b.HasKey("MonitoringSingleStatId");
 
-                    b.HasIndex("EcoRecordId")
+                    b.HasIndex("RecordId")
                         .IsUnique();
 
                     b.ToTable("MonitoringSingleStats");
@@ -108,7 +108,7 @@ namespace SparkSwim.GoodsService.Migrations
                 {
                     b.HasOne("SparkSwim.GoodsService.Goods.Models.EcoRecord", "EcoRecord")
                         .WithOne("MonitoringSingleStat")
-                        .HasForeignKey("SparkSwim.GoodsService.Goods.Models.MonitoringSingleStat", "EcoRecordId")
+                        .HasForeignKey("SparkSwim.GoodsService.Goods.Models.MonitoringSingleStat", "RecordId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -1,4 +1,5 @@
 using System.Data.OleDb;
+using System.Globalization;
 using OfficeOpenXml;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +25,15 @@ public class UrlAdminController : BaseController
     [HttpGet("writeDataFromXL")]
     public async Task<ActionResult> WriteDataToDbFromExcel()
     {
+        // Отримуємо всі записи з таблиці EcoRecord
+        var allRecords = _dbContext.EcoRecords.ToList();
+
+        // Видаляємо всі записи
+        _dbContext.EcoRecords.RemoveRange(allRecords);
+
+        // Зберігаємо зміни в базі даних
+        _dbContext.SaveChangesAsync(CancellationToken.None);
+        
         string path = Directory.GetCurrentDirectory();
             
         path = Directory.GetParent(path).ToString();
@@ -34,7 +44,7 @@ public class UrlAdminController : BaseController
             var worksheet = package.Workbook.Worksheets[0];
 
             int rowCount = worksheet.Dimension.Rows;
-
+            
             for (int row = 1; row <= rowCount; row++)
             {
                 EcoRecord entity = new EcoRecord()
@@ -47,8 +57,13 @@ public class UrlAdminController : BaseController
                     HydrogenFluoride = Convert.ToDouble(worksheet.Cells[row, 5].Value),
                     Ammonia = Convert.ToDouble(worksheet.Cells[row, 6].Value),
                     Formaldehyde = Convert.ToDouble(worksheet.Cells[row, 7].Value),  
-                    CreationDate = DateTime.Now,
                 };
+                
+                double excelDate = (double)worksheet.Cells[row, 8].Value;
+                DateTime dateTime = DateTime.FromOADate(excelDate); 
+                entity.CreationDate = dateTime;
+                
+                
                 MonitoringSingleStat monitoringSingleStat = new MonitoringSingleStat
                 {
                     SuspendedSolidsStat = _monitoring.CalculateNonCancerRiskForSuspendedSolids(entity.SuspendedSolids),
@@ -67,6 +82,10 @@ public class UrlAdminController : BaseController
                 entity.MonitoringSingleStat = monitoringSingleStat;
                 entity.MonitoringSingleStatId = Guid.NewGuid();
                 _dbContext.EcoRecords.Add(entity);
+                if (row == 89)
+                {
+                    
+                }
             }
             await _dbContext.SaveChangesAsync(CancellationToken.None);
         }

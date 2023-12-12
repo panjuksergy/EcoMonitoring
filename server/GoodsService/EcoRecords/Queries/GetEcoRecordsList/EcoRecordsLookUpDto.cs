@@ -14,6 +14,7 @@ public class EcoRecordsLookUpDto : IMapWith<EcoRecord>
     public double HydrogenFluoride  { get; set; }
     public double Ammonia  { get; set; }
     public double Formaldehyde { get; set; }
+    public DateTime CreationDate { get; set; }
 
     public void Mapping(Profile profile)
     {

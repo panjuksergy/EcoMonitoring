@@ -3,6 +3,7 @@
     <thead>
     <tr>
       <th>№</th>
+      <th>Date</th>
       <th>Suspended Solids</th>
       <th>Sulfur Dioxide</th>
       <th>Carbon Dioxide</th>
@@ -16,6 +17,7 @@
     <tbody>
     <tr *ngFor="let record of ecoRecords; let i = index">
       <td>{{i+1}}</td>
+      <td>{{ record.creationDate | date: 'yyyy-MM-dd HH:mm' }}</td>
       <td>{{ record.suspendedSolids }}</td>
       <td>{{ record.sulfurDioxide }}</td>
       <td>{{ record.carbonDioxide }}</td>

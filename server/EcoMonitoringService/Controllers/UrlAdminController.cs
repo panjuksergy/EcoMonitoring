@@ -62,7 +62,6 @@ public class UrlAdminController : BaseController
                 DateTime dateTime = DateTime.FromOADate(excelDate); 
                 entity.CreationDate = dateTime;
                 
-                
                 MonitoringSingleStat monitoringSingleStat = new MonitoringSingleStat
                 {
                     SuspendedSolidsStat = _monitoringService.CalculateNonCancerRiskForSuspendedSolids(entity.SuspendedSolids),
@@ -72,12 +71,29 @@ public class UrlAdminController : BaseController
                     HydrogenFluorideStat = _monitoringService.CalculateNonCancerRiskForHydrogenFluoride(entity.HydrogenFluoride),
                     AmmoniaStat = _monitoringService.CalculateNonCancerRiskForAmmonia(entity.Ammonia),
                     FormaldehydeStat = _monitoringService.CalculateNonCancerRiskForFormaldehyde(entity.Formaldehyde),
+                    
+                    SuspendedSolidsCancerStat = _monitoringService.CalculateCSFForSuspendedSolids(entity.SuspendedSolids),
+                    SulfurDioxideCancerStat = _monitoringService.CalculateCSFForSulfurDioxide(entity.SulfurDioxide),
+                    CarbonDioxideCancerStat = _monitoringService.CalculateCSFForCarbonDioxide(entity.CarbonDioxide),
+                    NitrogenDioxideCancerStat = _monitoringService.CalculateCSFForNitrogenDioxide(entity.NitrogenDioxide),
+                    HydrogenFluorideCancerStat = _monitoringService.CalculateCSFForHydrogenFluoride(entity.HydrogenFluoride),
+                    AmmoniaCancerStat = _monitoringService.CalculateCSFForAmmonia(entity.Ammonia),
+                    FormaldehydeCancerStat = _monitoringService.CalculateCSFForFormaldehyde(entity.Formaldehyde),
                 };
+                
                 double totalNonCancerRisk = _monitoringService.CalculateTotalNonCancerRisk(
                     monitoringSingleStat.SulfurDioxideStat, monitoringSingleStat.FormaldehydeStat,
                     monitoringSingleStat.CarbonDioxideStat, monitoringSingleStat.HydrogenFluorideStat,
                     monitoringSingleStat.SuspendedSolidsStat);
+
+                double totalCancerRisk = _monitoringService.CalculateTotalCancerRisk(
+                    monitoringSingleStat.SulfurDioxideCancerStat, monitoringSingleStat.FormaldehydeCancerStat,
+                    monitoringSingleStat.HydrogenFluorideCancerStat, monitoringSingleStat.CarbonDioxideCancerStat,
+                    monitoringSingleStat.SuspendedSolidsCancerStat, monitoringSingleStat.NitrogenDioxideCancerStat,
+                    monitoringSingleStat.AmmoniaCancerStat);
+                
                 monitoringSingleStat.TotalNonCancerRisk = totalNonCancerRisk;
+                monitoringSingleStat.TotalCancerRisk = totalCancerRisk;
                 entity.MonitoringSingleStat = monitoringSingleStat;
                 entity.MonitoringSingleStatId = Guid.NewGuid();
                 _dbContext.EcoRecords.Add(entity);

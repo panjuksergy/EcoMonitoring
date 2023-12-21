@@ -18,6 +18,7 @@ public class EcoRecordAuthorizeController : BaseController
     public EcoRecordAuthorizeController(IMapper mapper) => _mapper = mapper;
 
     #region EcoRecords
+    
     [HttpGet("details/{Id}")]
     public async Task<ActionResult<EcoRecordDetailsVm>> GetProductDetails(Guid Id)
     {
@@ -61,5 +62,6 @@ public class EcoRecordAuthorizeController : BaseController
         var vm = await Mediator.Send(query);
         return Ok(vm);
     }
+    
     #endregion
 }

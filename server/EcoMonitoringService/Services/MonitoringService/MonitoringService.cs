@@ -16,62 +16,129 @@ namespace SparkSwim.GoodsService.ShortenerService
         private const double RfcNitrogenDioxide = 0.04;
         private const double RfcAmmonia = 0.1;
 
-// Розрахунок неканцерогенного ризику для діоксиду азоту 
-
+        #region nonCancerRisk
         public double CalculateNonCancerRiskForNitrogenDioxide(double nitrogenDioxide)
         {
             double hq = nitrogenDioxide / RfcNitrogenDioxide;
             return hq;
         }
 
-// Розрахунок неканцерогенного ризику для аміаку
+        // Розрахунок неканцерогенного ризику для аміаку
         public double CalculateNonCancerRiskForAmmonia(double ammonia)
         {
             double hq = ammonia / RfcAmmonia;
             return hq;
         }
 
-// Розрахунок неканцерогенного ризику для діоксиду сірки
+        // Розрахунок неканцерогенного ризику для діоксиду сірки
         public double CalculateNonCancerRiskForSulfurDioxide(double sulfurDioxide)
         {
             double hq = sulfurDioxide / RfcSulfureDioxide;
             return hq;
         }
 
-// Розрахунок неканцерогенного ризику для формальдегіду
+        // Розрахунок неканцерогенного ризику для формальдегіду
         public double CalculateNonCancerRiskForFormaldehyde(double formaldehyde)
         {
             double hq = formaldehyde / RfcFormaldehid;
             return hq;
         }
 
-// Розрахунок неканцерогенного ризику для фтористого водню
+        // Розрахунок неканцерогенного ризику для фтористого водню
         public double CalculateNonCancerRiskForHydrogenFluoride(double hydrogenFluorid)
         {
             double hq = hydrogenFluorid / RfcHydrogenFluoride;
             return hq;
         }
 
-// Розрахунок неканцерогенного ризику для діоксиду вуглецю
+        // Розрахунок неканцерогенного ризику для діоксиду вуглецю
         public double CalculateNonCancerRiskForCarbonDioxide(double carbonDioxide)
         {
             double hq = carbonDioxide / RfcCarmonDioxyde;
             return hq;
         }
 
-// Розрахунок неканцерогенного ризику для твердих часток (пилу)
+        // Розрахунок неканцерогенного ризику для твердих часток (пилу)
         public double CalculateNonCancerRiskForSuspendedSolids(double suspendedSolids)
         {
             double hq = suspendedSolids / RfcSuspendedSolids;
             return hq;
         }
 
-// Розрахунок сумарного неканцерогенного ризику
+        // Розрахунок сумарного неканцерогенного ризику
         public double CalculateTotalNonCancerRisk(double hqSulfurDioxide, double hqFormaldehyde, double hqCarbonDioxide, double hqHydrogenFluoride, double hqSuspendedSolids)
         {
             double totalRisk = hqSulfurDioxide + hqFormaldehyde + hqHydrogenFluoride + hqCarbonDioxide +
                                hqSuspendedSolids;
             return totalRisk;
         }
+        #endregion
+
+        #region cancerRisk
+        public double CalculateCSFForSulfurDioxide(double exposureLevel)
+        {
+            // Sample formula (Not an accurate representation of actual CSF determination)
+            // This is a placeholder for an actual scientific calculation based on research
+            double csf = exposureLevel * 0.005; // Example formula (not accurate)
+
+            return csf;
+        }
+
+        // Add similar methods for other substances
+        public double CalculateCSFForFormaldehyde(double exposureLevel)
+        {
+            double csf = exposureLevel * 0.003; // Example formula (not accurate)
+            return csf;
+        }
+
+        public double CalculateCSFForHydrogenFluoride(double exposureLevel)
+        {
+            double csf = exposureLevel * 0.008; // Example formula (not accurate)
+            return csf;
+        }
+
+        public double CalculateCSFForCarbonDioxide(double exposureLevel)
+        {
+            double csf = exposureLevel * 0.007; // Example formula (not accurate)
+            return csf;
+        }
+
+        public double CalculateCSFForSuspendedSolids(double exposureLevel)
+        {
+            double csf = exposureLevel * 0.01; // Example formula (not accurate)
+            return csf;
+        }
+
+        public double CalculateCSFForNitrogenDioxide(double exposureLevel)
+        {
+            double csf = exposureLevel * 0.004; // Example formula (not accurate)
+            return csf;
+        }
+
+        public double CalculateCSFForAmmonia(double exposureLevel)
+        {
+            double csf = exposureLevel * 0.01; // Example formula (not accurate)
+            return csf;
+        }
+        
+        // Example method to calculate cancer risk for multiple carcinogens
+        public double CalculateTotalCancerRisk(
+            double riskSulfurDioxide, 
+            double riskFormaldehyde, 
+            double riskHydrogenFluoride,
+            double riskCarbonDioxide,
+            double riskSuspendedSolids,
+            double riskNitrogenDioxide,
+            double riskAmmonia)
+        {
+            // Calculate total cancer risk by summing up individual risks
+            double totalRisk = riskSulfurDioxide + riskFormaldehyde + riskHydrogenFluoride +
+                               riskCarbonDioxide + riskSuspendedSolids + riskNitrogenDioxide + riskAmmonia;
+
+            return totalRisk;
+        }
+
+        #endregion 
+        
     }
 }

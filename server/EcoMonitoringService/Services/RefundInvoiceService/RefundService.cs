@@ -28,6 +28,12 @@ public class RefundService : IRefundService
         var startDate = new DateTime(year, month, 1);
         var endDate = startDate.AddMonths(1).AddDays(1);
 
+        var tryToFetchFromBd = await _dbContext.RefundInvoices.Where(_ => _.PeriodFrom == startDate).FirstOrDefaultAsync();
+        if (tryToFetchFromBd != null)
+        {
+            return tryToFetchFromBd;
+        }
+        
         var allRecordsInMonth = await _dbContext.EcoRecords
             .Where(_ => _.CreationDate >= startDate && _.CreationDate <= endDate).ToListAsync();
 
@@ -55,10 +61,12 @@ public class RefundService : IRefundService
             RefundId = Guid.NewGuid(),
         };
 
+        await _dbContext.RefundInvoices.AddAsync(invoice);
+        await _dbContext.SaveChangesAsync(CancellationToken.None);
+
         return invoice;
     }
-
-
+    
     public double CalculateMoneyToRefund(MonthFormatDto monthStat)
     {
         int illegalIndex = 0;

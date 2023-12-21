@@ -13,5 +13,14 @@
         public double HydrogenFluorideStat { get; set; }
         public double AmmoniaStat { get; set; }
         public double FormaldehydeStat { get; set; }
+        
+        public double SuspendedSolidsCancerStat { get; set; }
+        public double SulfurDioxideCancerStat { get; set; }
+        public double CarbonDioxideCancerStat { get; set; }
+        public double NitrogenDioxideCancerStat { get; set; }
+        public double HydrogenFluorideCancerStat { get; set; }
+        public double AmmoniaCancerStat { get; set; }
+        public double FormaldehydeCancerStat { get; set; }
         public double TotalNonCancerRisk { get; set; }
+        public double TotalCancerRisk { get; set; }
     }

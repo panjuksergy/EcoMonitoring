@@ -8,9 +8,8 @@ using UserManagementService.Models;
 
 namespace UserManagementService.Controllers
 {
-    // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    // [Authorize(Roles = "Admin")]
-    [AllowAnonymous]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(Roles = "Admin")]
     public class UserAdminController : BaseController
     {
         private UserManager<AppUser> _userManager;
@@ -41,7 +40,7 @@ namespace UserManagementService.Controllers
         }
 
         [HttpPost("addrole")]
-       // [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IdentityResult> AddRole(AddRoleToUserDto addRoleToUser)
         {
             var user = await _userManager.FindByNameAsync(addRoleToUser.UserName);

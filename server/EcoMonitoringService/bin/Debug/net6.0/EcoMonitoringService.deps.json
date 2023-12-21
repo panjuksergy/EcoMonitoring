@@ -17,7 +17,8 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.0-preview.6.23329.4",
           "Microsoft.EntityFrameworkCore.Tools": "8.0.0-preview.6.23329.4",
           "System.Data.OleDb": "8.0.0-rc.2.23479.6",
-          "UrlShortener.Core": "1.0.0"
+          "UrlShortener.Core": "1.0.0",
+          "Newtonsoft.Json": "13.0.0.0"
         },
         "runtime": {
           "EcoMonitoringService.dll": {}
@@ -881,6 +882,14 @@
         "runtime": {
           "UrlShortener.Core.dll": {}
         }
+      },
+      "Newtonsoft.Json/13.0.0.0": {
+        "runtime": {
+          "Newtonsoft.Json.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.1.25517"
+          }
+        }
       }
     }
   },
@@ -1466,6 +1475,11 @@
     },
     "UrlShortener.Core/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Newtonsoft.Json/13.0.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

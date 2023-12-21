@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/elainezirael/InforceTestTask/EcoMonitoring 1lba/EcoMonitoring/server/UrlShortener.Core/UrlShortener.Core.csproj": {}
+    "/home/elainezirael/EcoMonitoringKURSACH/EcoMonitoring/server/UrlShortener.Core/UrlShortener.Core.csproj": {}
   },
   "projects": {
-    "/home/elainezirael/InforceTestTask/EcoMonitoring 1lba/EcoMonitoring/server/UrlShortener.Core/UrlShortener.Core.csproj": {
+    "/home/elainezirael/EcoMonitoringKURSACH/EcoMonitoring/server/UrlShortener.Core/UrlShortener.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/elainezirael/InforceTestTask/EcoMonitoring 1lba/EcoMonitoring/server/UrlShortener.Core/UrlShortener.Core.csproj",
+        "projectUniqueName": "/home/elainezirael/EcoMonitoringKURSACH/EcoMonitoring/server/UrlShortener.Core/UrlShortener.Core.csproj",
         "projectName": "UrlShortener.Core",
-        "projectPath": "/home/elainezirael/InforceTestTask/EcoMonitoring 1lba/EcoMonitoring/server/UrlShortener.Core/UrlShortener.Core.csproj",
+        "projectPath": "/home/elainezirael/EcoMonitoringKURSACH/EcoMonitoring/server/UrlShortener.Core/UrlShortener.Core.csproj",
         "packagesPath": "/home/elainezirael/.nuget/packages/",
-        "outputPath": "/home/elainezirael/InforceTestTask/EcoMonitoring 1lba/EcoMonitoring/server/UrlShortener.Core/obj/",
+        "outputPath": "/home/elainezirael/EcoMonitoringKURSACH/EcoMonitoring/server/UrlShortener.Core/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/elainezirael/.nuget/NuGet/NuGet.Config"

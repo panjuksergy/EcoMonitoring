@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{02
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserManagementService", "UserManagementService\UserManagementService.csproj", "{DE1FDD2B-EE9D-4CC7-A34F-743B034901AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcoMonitoringService", "GoodsService\EcoMonitoringService.csproj", "{3655F035-9172-415B-8D0B-69A64215F275}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcoMonitoringService", "EcoMonitoringService\EcoMonitoringService.csproj", "{3655F035-9172-415B-8D0B-69A64215F275}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{F01BFB1F-A96B-4D85-8938-F7342867806B}"
 EndProject

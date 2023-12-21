@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xUmNVeCzPx/XFbdaiKXUfrI9aNqKTAHuEFG2AuzqoW/j0P6oVGdYcSVqSfDj3SP36FfXdsrS6B0rCZbFdrLdeQ==",
+  "dgSpecHash": "WYm7pCbmmgzhMa+3mAPgZXVqnhXmEPaaR0g653+si8kiwjB9WQAafR8Bk32iy2cqA/8TnF/hAoyJEcc8BjJzLA==",
   "success": true,
-  "projectFilePath": "/home/elainezirael/InforceTestTask/EcoMonitoring 1lba/EcoMonitoring/server/UrlShortener.Core/UrlShortener.Core.csproj",
+  "projectFilePath": "/home/elainezirael/EcoMonitoringKURSACH/EcoMonitoring/server/UrlShortener.Core/UrlShortener.Core.csproj",
   "expectedPackageFiles": [
     "/home/elainezirael/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/home/elainezirael/.nuget/packages/mediatr/12.1.0/mediatr.12.1.0.nupkg.sha512",

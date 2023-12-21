@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "SparkSwim.GoodsService": {
+    "SparkSwim.EcoMonitoringService": {
       "commandName": "Project",
       "launchBrowser": false,
       "environmentVariables": {

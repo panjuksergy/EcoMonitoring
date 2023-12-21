@@ -3856,11 +3856,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/elainezirael/InforceTestTask/EcoMonitoring 1lba/EcoMonitoring/server/GoodsService/EcoMonitoringService.csproj",
+      "projectUniqueName": "/home/elainezirael/EcoMonitoringKURSACH/EcoMonitoring/server/EcoMonitoringService/EcoMonitoringService.csproj",
       "projectName": "EcoMonitoringService",
-      "projectPath": "/home/elainezirael/InforceTestTask/EcoMonitoring 1lba/EcoMonitoring/server/GoodsService/EcoMonitoringService.csproj",
+      "projectPath": "/home/elainezirael/EcoMonitoringKURSACH/EcoMonitoring/server/EcoMonitoringService/EcoMonitoringService.csproj",
       "packagesPath": "/home/elainezirael/.nuget/packages/",
-      "outputPath": "/home/elainezirael/InforceTestTask/EcoMonitoring 1lba/EcoMonitoring/server/GoodsService/obj/",
+      "outputPath": "/home/elainezirael/EcoMonitoringKURSACH/EcoMonitoring/server/EcoMonitoringService/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/elainezirael/.nuget/NuGet/NuGet.Config"
@@ -3875,8 +3875,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "/home/elainezirael/InforceTestTask/EcoMonitoring 1lba/EcoMonitoring/server/UrlShortener.Core/UrlShortener.Core.csproj": {
-              "projectPath": "/home/elainezirael/InforceTestTask/EcoMonitoring 1lba/EcoMonitoring/server/UrlShortener.Core/UrlShortener.Core.csproj"
+            "/home/elainezirael/EcoMonitoringKURSACH/EcoMonitoring/server/UrlShortener.Core/UrlShortener.Core.csproj": {
+              "projectPath": "/home/elainezirael/EcoMonitoringKURSACH/EcoMonitoring/server/UrlShortener.Core/UrlShortener.Core.csproj"
             }
           }
         }

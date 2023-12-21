@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "C6H4AQuVaCL9CNQoOqWz+c4roXmv0U2Yl8algW+R5DXdeoL+iyVDbMiILuiQ1blypT1eKfuwAY7Zb8I0dCAMKw==",
+  "dgSpecHash": "BBkm2cBOgex6NaXNAfZgapp7osB/Td1XTURCj3lBSPShJ+mziqt92Z7LwTUw/yF2z+oPs7joQpZ12otVgTZxWg==",
   "success": true,
-  "projectFilePath": "/home/elainezirael/InforceTestTask/EcoMonitoring 1lba/EcoMonitoring/server/UserManagementService/UserManagementService.csproj",
+  "projectFilePath": "/home/elainezirael/EcoMonitoringKURSACH/EcoMonitoring/server/UserManagementService/UserManagementService.csproj",
   "expectedPackageFiles": [
     "/home/elainezirael/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/home/elainezirael/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",

@@ -2,7 +2,7 @@ using SparkSwim.GoodsService.Goods.Models;
 
 namespace SparkSwim.GoodsService.ShortenerService;
 
-public interface IMonitoring
+public interface IMonitoringService
 {
     public double CalculateNonCancerRiskForNitrogenDioxide(double nitrogenDioxide);
     public double CalculateNonCancerRiskForAmmonia(double ammonia);

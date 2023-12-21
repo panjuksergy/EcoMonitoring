@@ -6,7 +6,7 @@ using SparkSwim.GoodsService.Goods.Models;
 
 namespace SparkSwim.GoodsService.ShortenerService
 {
-    public class Monitoring : IMonitoring
+    public class MonitoringService : IMonitoringService
     {
         private const double RfcSulfureDioxide = 0.08;
         private const double RfcFormaldehid = 0.046;

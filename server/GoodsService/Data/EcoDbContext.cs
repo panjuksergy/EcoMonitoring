@@ -10,6 +10,8 @@ public class EcoDbContext : DbContext, IEcoDbContext
 {
     public DbSet<EcoRecord> EcoRecords { get; set; }
     public DbSet<MonitoringSingleStat> MonitoringSingleStats { get; set; }
+    public DbSet<RefundInvoice> RefundInvoices { get; set; }
+
     public EcoDbContext(DbContextOptions<EcoDbContext> options) : base(options)
     {
     }

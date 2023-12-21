@@ -16,7 +16,8 @@
     </thead>
     <tbody>
     <tr *ngFor="let record of ecoRecords; let i = index">
-      <td>{{i+1}}</td>
+      <td>{{i+1}} <button *ngIf="isLastRecordOfMonth(i)" (click)="showRefundInfo(record.creationDate)" type="button" class="action-button addnew"><fa-icon [icon]="faInfo" style="color: #000000"></fa-icon></button>
+      </td>
       <td>{{ record.creationDate | date: 'yyyy-MM-dd HH:mm' }}</td>
       <td>{{ record.suspendedSolids }}</td>
       <td>{{ record.sulfurDioxide }}</td>
@@ -26,7 +27,6 @@
       <td>{{ record.ammonia }}</td>
       <td>{{ record.formaldehyde }}</td>
       <td class="mainButtons">
-
         <button (click)="showEcoRecordDetails(record.recordId)" type="button" class="action-button edit"><fa-icon [icon]="faInfo" style="color: #000000"></fa-icon></button>
         <button (click)="deleteEcoRecord(record.recordId)" type="button" class="action-button delete"><fa-icon [icon]="faTrash" style="color: #000000"></fa-icon></button>
       </td>
@@ -35,6 +35,12 @@
   </table>
 </div>
 
+<app-pop-up-component
+  *ngIf="isRefundInfoVisible"
+  [withDT]="false"
+  [shownText]=refundInfo
+  (closeOverlay)="handleDetailsClose()">
+</app-pop-up-component>
 
 <app-pop-up-component
   *ngIf="isDetailsVisible"

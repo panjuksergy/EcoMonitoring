@@ -15,7 +15,8 @@ namespace UserManagementService.Controllers
         {
             _userManager = userManager;
         }
-
+        
+        [AllowAnonymous]
         [HttpPost("register")]
         public async Task<IdentityResult> Register(RegisterUserDto registerUserModel)
         {

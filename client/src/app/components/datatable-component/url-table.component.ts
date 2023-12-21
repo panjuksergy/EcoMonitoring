@@ -8,6 +8,7 @@ import {AuthService} from "../identity-component/services/auth.service";
 import {DomSanitizer} from "@angular/platform-browser";
 import {Router} from "@angular/router";
 import {delay} from "rxjs";
+import {faCircleInfo} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-url-table',
@@ -17,17 +18,25 @@ import {delay} from "rxjs";
 export class UrlTableComponent implements OnInit {
   ecoRecords: any[] = [];
   detailsToShow = '';
+  refundInfo = '';
   getEcoRecordsReq: GetAllRequestModel = {};
   isLoggedIn: boolean = false;
   isOverlayVisible = false;
   isDetailsVisible =  false;
+  isRefundInfoVisible = false;
+  isAdmin = false;
   increment = 0;
   constructor(private ecoRecordsService: EcoRecordsService, private authService: AuthService, private sanitizer: DomSanitizer, private router : Router) {}
 
   async ngOnInit(): Promise<void> {
     this.isLoggedIn = this.authService.isLoggedIn();
     this.fetchAllEcoRecords();
+    const storedIsAdmin = localStorage.getItem('isAdmin');
+    if (storedIsAdmin !== null) {
+      this.isAdmin = JSON.parse(storedIsAdmin);
+    }
   }
+
   fetchAllEcoRecords(): void {
     this.ecoRecordsService.getAllEcoRecords(this.getEcoRecordsReq).subscribe((data) => {
       this.ecoRecords = data.ecoRecords;
@@ -42,8 +51,23 @@ export class UrlTableComponent implements OnInit {
       this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
         this.router.navigateByUrl(currentUrl);
       });
-    },400);
+    },500);
   }
+
+  isLastRecordOfMonth(index: number): boolean {
+    if (index <= this.ecoRecords.length - 1) {
+      const currentRecord = this.ecoRecords[index];
+      const nextRecord = this.ecoRecords[index + 1];
+      if (nextRecord == null && this.isAdmin){
+        return true;
+      }
+      const nextRecordMonth = new Date(nextRecord.creationDate).getMonth();
+      // Перевірка, чи наступний запис належить до іншого місяця
+      return (new Date(currentRecord.creationDate).getMonth() !== nextRecordMonth && this.isAdmin) ;
+    }
+    return false;
+  }
+
 
   showEcoRecordDetails(ulrId: string): void{
     this.ecoRecordsService.getMonitoringDetails(ulrId).subscribe((data) => {
@@ -61,6 +85,24 @@ export class UrlTableComponent implements OnInit {
     });
     this.isDetailsVisible = true;
   }
+
+  showRefundInfo(creationDate: any): void{
+    const date = new Date(creationDate);
+
+    const month = date.getMonth() + 1; // Adding 1 because getMonth() returns zero-based index (0 for January)
+    const year = date.getFullYear();
+    this.ecoRecordsService.getRefundInfo(year, month).subscribe((data) => {
+      const dateFrom = new Date(data.dateFrom);
+      const dateTo = new Date(data.dateTo);
+      this.refundInfo = `
+      Date From = ${dateFrom}        DateTo = ${dateTo}<br />
+                          Amount of money = ${data.money}
+    `;
+
+    });
+    this.isRefundInfoVisible = true;
+  }
+
   openOverlay() {
     this.isOverlayVisible = true;
   }
@@ -69,6 +111,7 @@ export class UrlTableComponent implements OnInit {
   }
   handleDetailsClose() {
     this.isDetailsVisible = false;
+    this.isRefundInfoVisible = false;
   }
 
   protected readonly faTrash = faTrash;

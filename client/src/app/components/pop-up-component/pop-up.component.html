@@ -3,6 +3,14 @@
     <div class="mainBlock">
       <div class="form-outline mb-4">
         <div class="align-content-center fw-bold fs-6 text-center" [innerHTML]="shownText"></div>
+        <form [formGroup]="form" (ngSubmit)="onSubmitForm()" *ngIf="withInput">
+          <!-- Інші поля форми -->
+          <div>
+            <input type="text" formControlName="inputText" #inputField>
+          </div>
+          <!-- Кнопка для відправки форми -->
+          <button type="submit" class="btn btn-primary btn-block col-md-4">Submit</button>
+        </form>
         <div *ngIf="withDT">
           <div class="table-container">
             <form [formGroup]="form" (ngSubmit)="onSubmitForm()">

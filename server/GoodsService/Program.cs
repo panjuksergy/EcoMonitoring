@@ -32,7 +32,7 @@ void RegisterServices(IServiceCollection services)
 {
     services.AddControllers();
 
-    services.AddSingleton<IMonitoring, Monitoring>();
+    services.AddSingleton<IMonitoringService, MonitoringService>();
     services.AddDbContext<IEcoDbContext, EcoDbContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
     );
@@ -46,7 +46,8 @@ void RegisterServices(IServiceCollection services)
     });
     services.AddApplication();
     services.AddControllers();
-    services.AddTransient<IMonitoring, Monitoring>();
+    services.AddTransient<IMonitoringService, MonitoringService>();
+    services.AddTransient<IRefundService, RefundService>();
 
     services.AddJwtAuth(builder.Configuration);
 }

@@ -10,6 +10,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 export class PopUpComponent {
   @Input() shownText = '';
   @Input() withDT: boolean = false;
+  @Input() withInput: boolean = false;
   @Output() closeOverlay = new EventEmitter<void>();
   @Output() onOkeyInput = new EventEmitter<string>();
 
@@ -25,7 +26,8 @@ export class PopUpComponent {
       nitrogenDioxide: '',
       hydrogenFluoride: '',
       ammonia: '',
-      formaldehyde: ''
+      formaldehyde: '',
+      inputText: ''
     });
   }
 
@@ -34,6 +36,10 @@ export class PopUpComponent {
   }
 
   onSubmitForm() {
+    if (this.withInput) {
+      const inputText = this.form.get('inputText')?.value; // Отримайте значення з інпуту
+      this.onOkeyInput.emit(inputText); // Відправте це значення за допомогою EventEmitter
+    }
       this.onSubmit.emit(this.form.value);
   }
 }

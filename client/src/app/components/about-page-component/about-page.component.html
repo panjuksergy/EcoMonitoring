@@ -4,7 +4,7 @@
       <div class="formatted-text text-center">
         <p *ngFor="let paragraph of paragraphs">{{ paragraph }}</p>
       </div>
-      <div class="mt-5 text-center">
+      <div class="mt-5 text-center" *ngIf="isAdmin">
         <button (click)="onChangeText()" class="btn btn-primary">U also can change this text, if u r admin</button>
       </div>
     </div>
@@ -12,6 +12,7 @@
 </div>
 <app-pop-up-component
   *ngIf="isPopOverVisible"
+  [withInput] = true
 [shownText]= shownText
 (onOkeyInput)= onOkey($event)
 (closeOverlay)="isPopOverVisible = false">

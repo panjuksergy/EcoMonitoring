@@ -13,13 +13,13 @@ export class AuthService {
   }
 
   public register(user: RegistrationModel): Observable<any> {
-    return this.http.post('https://localhost:5004/api/UserAnonymous/register', user);
+    return this.http.post('http://localhost:5004/api/UserAnonymous/register', user);
   }
 
   public login(user: Login): Observable<any> {
     return this.http.post('https://localhost:5003/api/identity/login', user, {
       responseType: 'text',
-    });
+    })
   }
 
   public logout(){

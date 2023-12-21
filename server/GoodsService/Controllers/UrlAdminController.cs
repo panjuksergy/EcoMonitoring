@@ -13,15 +13,14 @@ namespace SparkSwim.GoodsService.Controllers;
 public class UrlAdminController : BaseController
 {
     private readonly IEcoDbContext _dbContext;
-    private readonly IMonitoring _monitoring;
+    private readonly IMonitoringService _monitoringService;
 
-    public UrlAdminController(IEcoDbContext ecoDbContext, IMonitoring monitoring)
+    public UrlAdminController(IEcoDbContext ecoDbContext, IMonitoringService monitoringService)
     {
         _dbContext = ecoDbContext;
-        _monitoring = monitoring;
+        _monitoringService = monitoringService;
     }
 
-    [AllowAnonymous]
     [HttpGet("writeDataFromXL")]
     public async Task<ActionResult> WriteDataToDbFromExcel()
     {
@@ -66,15 +65,15 @@ public class UrlAdminController : BaseController
                 
                 MonitoringSingleStat monitoringSingleStat = new MonitoringSingleStat
                 {
-                    SuspendedSolidsStat = _monitoring.CalculateNonCancerRiskForSuspendedSolids(entity.SuspendedSolids),
-                    SulfurDioxideStat = _monitoring.CalculateNonCancerRiskForSulfurDioxide(entity.SulfurDioxide),
-                    CarbonDioxideStat = _monitoring.CalculateNonCancerRiskForCarbonDioxide(entity.CarbonDioxide),
-                    NitrogenDioxideStat = _monitoring.CalculateNonCancerRiskForNitrogenDioxide(entity.NitrogenDioxide),
-                    HydrogenFluorideStat = _monitoring.CalculateNonCancerRiskForHydrogenFluoride(entity.HydrogenFluoride),
-                    AmmoniaStat = _monitoring.CalculateNonCancerRiskForAmmonia(entity.Ammonia),
-                    FormaldehydeStat = _monitoring.CalculateNonCancerRiskForFormaldehyde(entity.Formaldehyde),
+                    SuspendedSolidsStat = _monitoringService.CalculateNonCancerRiskForSuspendedSolids(entity.SuspendedSolids),
+                    SulfurDioxideStat = _monitoringService.CalculateNonCancerRiskForSulfurDioxide(entity.SulfurDioxide),
+                    CarbonDioxideStat = _monitoringService.CalculateNonCancerRiskForCarbonDioxide(entity.CarbonDioxide),
+                    NitrogenDioxideStat = _monitoringService.CalculateNonCancerRiskForNitrogenDioxide(entity.NitrogenDioxide),
+                    HydrogenFluorideStat = _monitoringService.CalculateNonCancerRiskForHydrogenFluoride(entity.HydrogenFluoride),
+                    AmmoniaStat = _monitoringService.CalculateNonCancerRiskForAmmonia(entity.Ammonia),
+                    FormaldehydeStat = _monitoringService.CalculateNonCancerRiskForFormaldehyde(entity.Formaldehyde),
                 };
-                double totalNonCancerRisk = _monitoring.CalculateTotalNonCancerRisk(
+                double totalNonCancerRisk = _monitoringService.CalculateTotalNonCancerRisk(
                     monitoringSingleStat.SulfurDioxideStat, monitoringSingleStat.FormaldehydeStat,
                     monitoringSingleStat.CarbonDioxideStat, monitoringSingleStat.HydrogenFluorideStat,
                     monitoringSingleStat.SuspendedSolidsStat);
@@ -82,10 +81,6 @@ public class UrlAdminController : BaseController
                 entity.MonitoringSingleStat = monitoringSingleStat;
                 entity.MonitoringSingleStatId = Guid.NewGuid();
                 _dbContext.EcoRecords.Add(entity);
-                if (row == 89)
-                {
-                    
-                }
             }
             await _dbContext.SaveChangesAsync(CancellationToken.None);
         }

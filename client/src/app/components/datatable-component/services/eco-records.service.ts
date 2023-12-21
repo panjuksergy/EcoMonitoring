@@ -21,4 +21,7 @@ export class EcoRecordsService {
   getMonitoringDetails(id: string ): Observable<any> {
     return this.http.get(`${this.baseUrl}/EcoRecordAuthorize/details/`+id);
   }
+  getRefundInfo(year: number, month: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/EcoRecordAuthorize/getRefundInvoice?year=${year}&month=${month}`);
+  }
 }

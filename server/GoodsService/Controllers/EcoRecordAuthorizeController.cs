@@ -1,4 +1,5 @@
 using AutoMapper;
+using EcoMonitoringService.EcoRecords.Queries.GetRefundInvoice;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -47,6 +48,18 @@ public class EcoRecordAuthorizeController : BaseController
         command.UserId = UserId;
         await Mediator.Send(command);
         return Ok();
+    }
+
+    [HttpGet("getRefundInvoice")]
+    public async Task<ActionResult<RefundInvoiceVm>> GetRefundInvoice(int year, int month)
+    {
+        var query = new RefundInvoiceQuery
+        {
+            Month = month,
+            Year = year
+        };
+        var vm = await Mediator.Send(query);
+        return Ok(vm);
     }
     #endregion
 }

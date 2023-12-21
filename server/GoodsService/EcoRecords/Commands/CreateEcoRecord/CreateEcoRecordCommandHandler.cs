@@ -8,12 +8,12 @@ namespace SparkSwim.GoodsService.Goods.Commands.CreateGood;
 public class CreateEcoRecordCommandHandler : IRequestHandler<CreateEcoRecordCommand, EcoRecord>
 {
     private readonly IEcoDbContext _dbContext;
-    private readonly IMonitoring _monitoring;
+    private readonly IMonitoringService _monitoringService;
 
-    public CreateEcoRecordCommandHandler(IEcoDbContext dbContext, IMonitoring monitoring)
+    public CreateEcoRecordCommandHandler(IEcoDbContext dbContext, IMonitoringService monitoringService)
     {
         _dbContext = dbContext;
-        _monitoring = monitoring;
+        _monitoringService = monitoringService;
     }
 
     public async Task<EcoRecord> Handle(CreateEcoRecordCommand request, CancellationToken cancellationToken)

@@ -22,6 +22,7 @@ import { AboutPageComponent } from './components/about-page-component/about-page
 import { LogOutComponent } from './components/identity-component/pages/log-out-component/log-out.component';
 import { ContactPageComponent } from './components/contact-page-component/contact-page.component';
 import { FetchExcelComponent } from './components/fetch-excel/fetch-excel.component';
+import {JwtHelperService, JwtModule} from "@auth0/angular-jwt";
 
 @NgModule({
   declarations: [
@@ -48,6 +49,13 @@ import { FetchExcelComponent } from './components/fetch-excel/fetch-excel.compon
     BrowserAnimationsModule,
     FontAwesomeModule,
     ReactiveFormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('authToken');
+        },
+      }
+    })
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
